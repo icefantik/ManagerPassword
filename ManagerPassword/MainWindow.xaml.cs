@@ -22,7 +22,7 @@ namespace ManagerPassword
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int idElem;
+        private UserData elemUserData;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +35,19 @@ namespace ManagerPassword
             addElemWindow.ShowDialog();
             UploadTable();
         }
+        private void OpenSetting_Click(object sender, RoutedEventArgs e)
+        {
+            SettingWindow settingWindow = new SettingWindow();
+            settingWindow.Owner = this;
+            settingWindow.ShowDialog();
+        }
+        private void OpenEdit_Click(object sender, RoutedEventArgs e)
+        {
+            EditElemWindow editElemWindow = new EditElemWindow(elemUserData.id, elemUserData.title, elemUserData.username, elemUserData.email, elemUserData.url, elemUserData.password, elemUserData.note);
+            editElemWindow.Owner = this;
+            editElemWindow.ShowDialog();
+            UploadTable();
+        }
         public void UploadTable()
         {
             List<UserData> userDatas = Database.Database.GetListUserData(Query.execGetUserData);
@@ -45,13 +58,38 @@ namespace ManagerPassword
             UserData objSelectTable = (UserData)userData.SelectedItem;
             if (objSelectTable != null)
             {
-                idElem = objSelectTable.id;
-                System.Diagnostics.Debug.WriteLine(idElem);
+                elemUserData = objSelectTable;
+                System.Diagnostics.Debug.WriteLine(elemUserData);
             }
             else
             {
                 MessageBox.Show("Элемент в таблице не выбран", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Database.Database.FillDataAdapter(String.Format(Query.execDeteleUser, elemUserData.id));
+            UploadTable();
+        }
+        private static void CopyClipboard(string data)
+        {
+            Clipboard.SetData(DataFormats.Text, (Object)data);
+        }
+        private void CopyUsernameMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CopyClipboard(elemUserData.username);
+        }
+        private void CopyEmailMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CopyClipboard(elemUserData.email);
+        }
+        private void CopyPasswordMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CopyClipboard(elemUserData.password);
+        }
+        private void CopyUrlMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CopyClipboard(elemUserData.url);
         }
     }
 }

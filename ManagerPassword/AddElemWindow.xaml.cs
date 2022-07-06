@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +29,9 @@ namespace ManagerPassword
         }
         private void AddElem_Btn(object sender, RoutedEventArgs e)
         {
-            if (!(textboxTitle.Text == "" || textboxUsername.Text == "" || textboxEmail.Text == "" || textboxUrl.Text == "" || textboxPassword.Text == "" || textboxNote.Text == ""))
+            Regex regex = new Regex(@"^[a-zA-Z](.[a-zA-Z0-9_-]*)$");
+            MatchCollection match = regex.Matches(textboxUsername.Text);
+            if (CheckData.CheckTextBoxData(textboxTitle.Text, textboxUsername.Text, textboxEmail.Text, textboxUrl.Text, textboxPassword.Text, textboxNote.Text))
             {
                 string query = String.Format(Query.execAddElem, textboxTitle.Text, textboxUsername.Text, textboxEmail.Text, textboxUrl.Text, textboxPassword.Text, textboxNote.Text);
                 Database.Database.AddElemUserData(query);
@@ -36,7 +39,7 @@ namespace ManagerPassword
             }
             else
             {
-                MessageBox.Show("Незаполненое поле или поля", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка значения содержимого полей", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void GenerationPassword_Click(object sender, RoutedEventArgs e)

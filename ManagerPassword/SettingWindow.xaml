@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManagerPassword"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="450" Width="450">
+        Title="SettingWindow" Height="450" Width="450" ResizeMode="NoResize">
     <Grid>
         
     </Grid>

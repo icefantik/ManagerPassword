@@ -29,11 +29,23 @@
                     <MenuItem Header="Edit"/>
                     <MenuItem Header="Add" Click="OpenAddElem"/>
                 </MenuItem>
-                <MenuItem Header="Setting"/>
+                <MenuItem Header="Setting" Click="OpenSetting_Click"/>
                 <MenuItem Header="Help">
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <DataGrid x:Name="userData" PreviewMouseRightButtonDown="Click_RightButton"  IsReadOnly="True" AutoGenerateColumns="True" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{DynamicResource ResourceKey=UserData}"/>
+        <DataGrid x:Name="userData" PreviewMouseRightButtonDown="Click_RightButton"  IsReadOnly="True" AutoGenerateColumns="True" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{DynamicResource ResourceKey=UserData}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy" Command="Copy"/>
+                    <MenuItem Header="Copy username" Click="CopyUsernameMenuItem_Click"/>
+                    <MenuItem Header="Copy email" Click="CopyEmailMenuItem_Click"/>
+                    <MenuItem Header="Copy password" Click="CopyPasswordMenuItem_Click"/>
+                    <MenuItem Header="Copy url" Click="CopyUrlMenuItem_Click"/>
+                    <MenuItem Header="Edit" Click="OpenEdit_Click"/>
+                    <MenuItem Header="Delete" Click="DeleteMenuItem_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
     </Grid>
 </Window>
