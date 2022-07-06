@@ -5,27 +5,53 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ManagerPassword
 {
     class CheckData
     {
+        private static string patternUsername = @"^[a-zA-Z](.[a-zA-Z0-9_-]*)$";
+        private static string patternEmail = @"(@)(.+)$";
         public static bool CheckTextBoxData(string title, string username, string email, string url, string password, string note)
         {
-            if (!(title == "" || username == "" || email == "" || url == "" || password == "" || note == "") && CheckUsername(username))
+            if (CheckEmpty(title, username, email, url, password, note) && CheckUsername(username) && CheckEmail(email))
             {
                 return true;
             }
             return false;
         }
-        public static bool CheckUsername(string username)
+        private static MatchCollection FormRegex(string pattern, string input)
         {
-            Regex regex = new Regex(@"^[a-zA-Z](.[a-zA-Z0-9_-]*)$");
-            MatchCollection match = regex.Matches(username);
-            if (match.Count > 0)
+            Regex regex = new Regex(pattern);
+            MatchCollection match = regex.Matches(input);
+            return match;
+        }
+        private static bool CheckEmpty(string title, string username, string email, string url, string password, string note)
+        {
+            if (!(title == "" || username == "" || email == "" || url == "" || password == "" || note == ""))
             {
                 return true;
             }
+            Message.MessageBoxError(Message.msgEmptyTextBox);
+            return false;
+        }
+        public static bool CheckUsername(string username)
+        {
+            if (FormRegex(patternUsername, username).Count > 0)
+            {
+                return true;
+            }
+            Message.MessageBoxError(Message.msgBadUsername);
+            return false;
+        }
+        public static bool CheckEmail(string email)
+        {
+            if (FormRegex(patternEmail, email).Count > 0)
+            {
+                return true;
+            }
+            Message.MessageBoxError(Message.msgBadEmail);
             return false;
         }
     }

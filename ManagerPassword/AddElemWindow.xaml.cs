@@ -37,21 +37,17 @@ namespace ManagerPassword
                 Database.Database.AddElemUserData(query);
                 Hide();
             }
-            else
-            {
-                MessageBox.Show("Ошибка значения содержимого полей", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
         private void GenerationPassword_Click(object sender, RoutedEventArgs e)
         {
             Random rand = new Random();
-            string word = "";
+            string password = "";
             for (int index = 1; index <= LengthLetters; ++index)
             {
                 int letter_number = rand.Next(0, letters.Length - 1);
-                word += letters[letter_number];
+                password += letters[letter_number];
             }
-            textboxPassword.Text = word;
+            textboxPassword.Text = password;
         }
     }
 }
