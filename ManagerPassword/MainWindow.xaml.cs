@@ -2,6 +2,7 @@
 using ManagerPassword.Resources;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,7 +64,7 @@ namespace ManagerPassword
             }
             else
             {
-                MessageBox.Show("Элемент в таблице не выбран", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(Message.msgNotChangeElem, Message.captionWarning, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
@@ -90,6 +91,17 @@ namespace ManagerPassword
         private void CopyUrlMenuItem_Click(object sender, RoutedEventArgs e)
         {
             CopyClipboard(elemUserData.url);
+        }
+        private void FolowUrl_Click(object sender, RoutedEventArgs e)
+        {
+            try 
+            {
+                Process.Start(elemUserData.url);
+            }
+            catch
+            {
+                MessageBox.Show(Message.msgUrlError, Message.captionWarning, MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }
