@@ -10,7 +10,6 @@
         <local:DateConverterPassword x:Key="dataConvPassword"/>
     </Window.Resources>
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="29*" />
             <ColumnDefinition Width="103*" />
@@ -28,18 +27,24 @@
                     <MenuItem Header="Close"/>
                     <MenuItem Header="Save"/>
                 </MenuItem>
-                <MenuItem Header="Edit">
-                    <MenuItem Header="Edit"/>
-                    <MenuItem Header="Add" Click="OpenAddElem"/>
-                </MenuItem>
+                <MenuItem Header="Add" Click="OpenAddElem"/>
                 <MenuItem Header="Setting" Click="OpenSetting_Click"/>
                 <MenuItem Header="Help">
                 </MenuItem>
             </Menu>
         </DockPanel>
+        <!--
         <ListBox Grid.Row="1" Grid.RowSpan="2">
             
         </ListBox>
+        -->
+        <ItemsControl Grid.Row="1" Grid.RowSpan="2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button x:Name="button1" Width="60" Height="30" Content="hidden passwords"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <DataGrid x:Name="userData" PreviewMouseRightButtonDown="Click_RightButton" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{DynamicResource ResourceKey=UserData}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="title" Binding="{Binding Path=title}" />

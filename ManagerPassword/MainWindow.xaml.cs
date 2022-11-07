@@ -44,10 +44,13 @@ namespace ManagerPassword
         }
         private void OpenEdit_Click(object sender, RoutedEventArgs e)
         {
-            EditElemWindow editElemWindow = new EditElemWindow(elemUserData.id, elemUserData.title, elemUserData.username, elemUserData.email, elemUserData.url, elemUserData.password, elemUserData.note);
-            editElemWindow.Owner = this;
-            editElemWindow.ShowDialog();
-            UploadTable();
+            if (elemUserData != null)
+            {
+                EditElemWindow editElemWindow = new EditElemWindow(elemUserData.id, elemUserData.title, elemUserData.username, elemUserData.email, elemUserData.url, elemUserData.password, elemUserData.note);
+                editElemWindow.Owner = this;
+                editElemWindow.ShowDialog();
+                UploadTable();
+            }
         }
         public void UploadTable()
         {

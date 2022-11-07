@@ -22,6 +22,13 @@ namespace ManagerPassword
         public SettingWindow()
         {
             InitializeComponent();
+            
+        }
+        
+        private void OnScroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+            int value = (int)scrollBar.Value;
+            counterScrollBar.Text = value.ToString();
         }
     }
 }
