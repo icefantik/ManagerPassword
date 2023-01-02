@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -53,6 +54,13 @@ namespace ManagerPassword
             }
             Message.MessageBoxError(Message.msgBadEmail);
             return false;
+        }
+        public static string EncryptionPwd(string pwd)
+        {
+            byte[] data = Encoding.UTF8.GetBytes(pwd);
+            SHA512 shaM = new SHA512Managed();
+            byte[] result = shaM.ComputeHash(data);
+            return BitConverter.ToString(result).Replace("-", String.Empty);
         }
     }
 }
