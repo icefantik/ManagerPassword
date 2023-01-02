@@ -1,21 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace ManagerPassword
 {
     internal class Encryption
     {
-        static long p = 5, q = 9;
+        private static long p = 5, q = 9;
+        private static char[] characters = new char[] { '#', 
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
         public static string EncryptionPwd(string pwd)
         {
             long n = p * q;
             long m = (p - 1) * (q - 1);
             long d = CalculateD(m);
             long e = CalculateE(d, m);
-            return "";
+
+            return RSAEncoder(pwd, e, n);
+        }
+        private static string RSAEncoder(string pwd, long e, long n)
+        {
+            //List<string> result = new List<string>();
+            string result = "";
+            BigInteger bi;
+            for (int i = 0; i < pwd.Length; ++i)
+            {
+                int index = Array.IndexOf(characters, pwd[i]);
+                bi = new BigInteger();
+                bi = BigInteger.Pow(bi, (int)e);
+
+                BigInteger n_ = new BigInteger((int)n);
+
+                bi %= n_;
+                //result.Add(bi.ToString());
+                result += bi.ToString();
+            }
+            return result;
         }
         private static long CalculateD(long m)
         {
@@ -42,10 +68,23 @@ namespace ManagerPassword
             }
             return e;
         }
-        public static string DecryptionPwd(string hashPwd)
+        public static string DecryptionPwd(List<string> hashPwd, long d, long n)
         {
+            string result = "";
+            BigInteger bi;
+            foreach (string item in hashPwd)
+            {
+                bi = new BigInteger(Convert.ToDouble(item));
+                bi = BigInteger.Pow(bi, (int)d);
 
-            return "";
+                BigInteger n_ = new BigInteger((int)n);
+
+                bi %= n_;
+
+                int index = Convert.ToInt32(bi.ToString());
+                result += characters[index].ToString();
+            }
+            return result;
         }
     }
 }
