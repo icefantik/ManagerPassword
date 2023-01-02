@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,6 +15,7 @@ namespace ManagerPassword
     {
         private static string patternUsername = @"^[a-zA-Z](.[a-zA-Z0-9_-]*)$";
         private static string patternEmail = @"(@)(.+)$";
+        private static readonly string securityCode = "mJeb44V5grh0pTB6wgepSw==";
         public static bool CheckTextBoxData(string title, string username, string email, string url, string password, string note)
         {
             if (CheckEmpty(title, username, email, url, password, note) && CheckUsername(username) && CheckEmail(email))
@@ -61,6 +63,14 @@ namespace ManagerPassword
             SHA512 shaM = new SHA512Managed();
             byte[] result = shaM.ComputeHash(data);
             return BitConverter.ToString(result).Replace("-", String.Empty);
+        }
+        public static string DecryptionPwd(string hashPwd)
+        {
+            SHA512Managed sha512 = new SHA512Managed();
+            Byte[] EncryptedSHA512 = sha512.ComputeHash(Encoding.UTF8.GetBytes(string.Concat(hashPwd, securityCode)));
+            sha512.Clear();
+            var t = Convert.ToBase64String(EncryptedSHA512);
+            return "";
         }
     }
 }
