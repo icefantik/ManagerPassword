@@ -59,17 +59,12 @@ namespace ManagerPassword
         }
         public static string EncryptionPwd(string pwd)
         {
-            byte[] data = Encoding.UTF8.GetBytes(pwd);
-            SHA512 shaM = new SHA512Managed();
-            byte[] result = shaM.ComputeHash(data);
-            return BitConverter.ToString(result).Replace("-", String.Empty);
+
+            return "";
         }
         public static string DecryptionPwd(string hashPwd)
         {
-            SHA512Managed sha512 = new SHA512Managed();
-            Byte[] EncryptedSHA512 = sha512.ComputeHash(Encoding.UTF8.GetBytes(string.Concat(hashPwd, securityCode)));
-            sha512.Clear();
-            var t = Convert.ToBase64String(EncryptedSHA512);
+
             return "";
         }
     }
