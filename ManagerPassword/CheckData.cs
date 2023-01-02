@@ -15,7 +15,6 @@ namespace ManagerPassword
     {
         private static string patternUsername = @"^[a-zA-Z](.[a-zA-Z0-9_-]*)$";
         private static string patternEmail = @"(@)(.+)$";
-        private static readonly string securityCode = "mJeb44V5grh0pTB6wgepSw==";
         public static bool CheckTextBoxData(string title, string username, string email, string url, string password, string note)
         {
             if (CheckEmpty(title, username, email, url, password, note) && CheckUsername(username) && CheckEmail(email))
@@ -56,16 +55,6 @@ namespace ManagerPassword
             }
             Message.MessageBoxError(Message.msgBadEmail);
             return false;
-        }
-        public static string EncryptionPwd(string pwd)
-        {
-
-            return "";
-        }
-        public static string DecryptionPwd(string hashPwd)
-        {
-
-            return "";
         }
     }
 }
