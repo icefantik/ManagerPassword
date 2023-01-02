@@ -11,14 +11,14 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="29*" />
+            <!--<ColumnDefinition Width="29*" />-->
             <ColumnDefinition Width="103*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="18*" />
-            <RowDefinition Height="79*" />
+            <RowDefinition Height="18*" />
             <RowDefinition Height="306*" />
-            <RowDefinition Height="19*" />
+            <!-- <RowDefinition Height="19*" /> -->
         </Grid.RowDefinitions>
         <DockPanel Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
@@ -27,17 +27,16 @@
                     <MenuItem Header="Close"/>
                     <MenuItem Header="Save"/>
                 </MenuItem>
-                <MenuItem Header="Add" Click="OpenAddElem"/>
+                <MenuItem Header="Add password" Click="OpenAddElem"/>
+                <MenuItem Header="Hidden password">
+                    <MenuItem x:Name="MenuItemShowHiddenPwd" Header="Show" IsCheckable="True" IsChecked="False" Click="ShowHiddenPassword_Click"/>
+                </MenuItem>
                 <MenuItem Header="Setting" Click="OpenSetting_Click"/>
                 <MenuItem Header="Help">
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <!--
-        <ListBox Grid.Row="1" Grid.RowSpan="2">
-            
-        </ListBox>
-        -->
+
         <ItemsControl Grid.Row="1" Grid.RowSpan="2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -67,5 +66,8 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
+
+        <!--<Button x:Name="btnShowHiddenPwd" Content="Show Hidden Passwords" Grid.Column="0" Grid.Row="1" Click="btnShowHiddenPwd_Click"/>-->
+
     </Grid>
 </Window>

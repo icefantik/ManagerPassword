@@ -106,5 +106,14 @@ namespace ManagerPassword
                 MessageBox.Show(Message.msgUrlError, Message.captionWarning, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+        private void ShowHiddenPassword_Click(object sender, RoutedEventArgs e)
+        {
+            if (MenuItemShowHiddenPwd.IsChecked)
+            {
+                EnterPasswordWindow pwdWindow = new EnterPasswordWindow();
+                pwdWindow.Owner = this;
+                pwdWindow.ShowDialog();
+            }
+        }
     }
 }
