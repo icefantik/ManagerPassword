@@ -33,7 +33,7 @@ namespace ManagerPassword
             MatchCollection match = regex.Matches(textboxUsername.Text);
             if (CheckData.CheckTextBoxData(textboxTitle.Text, textboxUsername.Text, textboxEmail.Text, textboxUrl.Text, textboxPassword.Text, textboxNote.Text))
             {
-                string query = String.Format(Query.execAddElem, textboxTitle.Text, textboxUsername.Text, textboxEmail.Text, textboxUrl.Text, textboxPassword.Text, textboxNote.Text);
+                string query = String.Format(Query.execAddElem, textboxTitle.Text, textboxUsername.Text, textboxEmail.Text, textboxUrl.Text, Encryption.EncryptionPwd(textboxPassword.Text), textboxNote.Text);
                 Database.Database.AddElemUserData(query);
                 Hide();
             }

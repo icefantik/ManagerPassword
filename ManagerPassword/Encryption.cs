@@ -32,15 +32,16 @@ namespace ManagerPassword
             for (int i = 0; i < pwd.Length; ++i)
             {
                 int index = Array.IndexOf(characters, pwd[i]);
-                bi = new BigInteger();
+                bi = new BigInteger(index);
                 bi = BigInteger.Pow(bi, (int)e);
 
                 BigInteger n_ = new BigInteger((int)n);
 
                 bi %= n_;
                 //result.Add(bi.ToString());
-                result += bi.ToString();
+                result += bi.ToString() + "-";
             }
+            result = result.Remove(result.Length-1);
             return result;
         }
         private static long CalculateD(long m)
