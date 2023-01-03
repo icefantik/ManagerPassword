@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="HelpWindow" Height="400" Width="400" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="111*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="269*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="Images/icon.jpg" Grid.Row="1"/>
+        <TextBlock Grid.Row="1" Grid.Column="1"></TextBlock>
     </Grid>
 </Window>
