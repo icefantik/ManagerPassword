@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManagerPassword"
         mc:Ignorable="d"
-        Title="EditElemWindow" Height="130" Width="550">
+        Title="EditElemWindow" Height="130" Width="550" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <!-- Разбиение ширину экрана -->

@@ -19,6 +19,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBox Name="Password" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <Button Content="Enter" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Content="Enter" Click="EnterPwdBtn_Click" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
