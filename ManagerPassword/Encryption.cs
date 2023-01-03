@@ -24,6 +24,15 @@ namespace ManagerPassword
 
             return RSAEncoder(pwd, e, n);
         }
+        public static string DecryptionPwd(string hashPwd)
+        {
+            long n = p * q;
+            long m = (p - 1) * (q - 1);
+            long d = CalculateD(m);
+            long e = CalculateE(d, m);
+
+            return RSADecryption(hashPwd, d, n);
+        }
         private static string RSAEncoder(string pwd, long e, long n)
         {
             //List<string> result = new List<string>();
@@ -69,13 +78,16 @@ namespace ManagerPassword
             }
             return e;
         }
-        public static string DecryptionPwd(List<string> hashPwd, long d, long n)
+        //public static string DecryptionPwd(string hashPwd, long d, long n)
+        public static string RSADecryption(string hashPwd, long d, long n)
         {
+
+            hashPwd.Split('-');
             string result = "";
             BigInteger bi;
-            foreach (string item in hashPwd)
+            for (int i = 0; i < hashPwd.Length; ++i)
             {
-                bi = new BigInteger(Convert.ToDouble(item));
+                bi = new BigInteger(Convert.ToDouble(hashPwd[i]));
                 bi = BigInteger.Pow(bi, (int)d);
 
                 BigInteger n_ = new BigInteger((int)n);

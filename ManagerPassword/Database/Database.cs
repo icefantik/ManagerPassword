@@ -67,7 +67,7 @@ namespace ManagerPassword.Database
                     username = dataTable.Rows[index][3].ToString(),
                     email = dataTable.Rows[index][4].ToString(),
                     url = dataTable.Rows[index][5].ToString(),
-                    password = dataTable.Rows[index][6].ToString(),
+                    password = Encryption.DecryptionPwd(dataTable.Rows[index][6].ToString()),
                     note = dataTable.Rows[index][7].ToString()
                 };
                 userDatas.Add(userData);
