@@ -32,7 +32,7 @@
                     <MenuItem x:Name="MenuItemShowHiddenPwd" Header="Show" IsCheckable="True" IsChecked="False" Click="ShowHiddenPassword_Click"/>
                 </MenuItem>
                 <MenuItem Header="Setting" Click="OpenSetting_Click"/>
-                <MenuItem Header="Help">
+                <MenuItem Header="Help" Click="OpenHelpWindow_Click">
                 </MenuItem>
             </Menu>
         </DockPanel>

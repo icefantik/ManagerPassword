@@ -52,6 +52,12 @@ namespace ManagerPassword
                 UploadTable();
             }
         }
+        private void OpenHelpWindow_Click(object sender, RoutedEventArgs e)
+        {
+            HelpWindow helpWindow = new HelpWindow();
+            helpWindow.Owner = this;
+            helpWindow.ShowDialog();
+        }
         public void UploadTable()
         {
             List<UserData> userDatas = Database.Database.GetListUserData(Query.execGetUserData);
