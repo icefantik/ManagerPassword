@@ -29,20 +29,14 @@ namespace ManagerPassword
             InitializeComponent();
             UploadTable();
         }
-        private void OpenAddElem(object sender, RoutedEventArgs e)
+        private void OpenAddWindow_Click(object sender, RoutedEventArgs e)
         {
             AddElemWindow addElemWindow = new AddElemWindow();
             addElemWindow.Owner = this;
             addElemWindow.ShowDialog();
             UploadTable();
         }
-        private void OpenSetting_Click(object sender, RoutedEventArgs e)
-        {
-            SettingWindow settingWindow = new SettingWindow();
-            settingWindow.Owner = this;
-            settingWindow.ShowDialog();
-        }
-        private void OpenEdit_Click(object sender, RoutedEventArgs e)
+        private void OpenEditWindow_Click(object sender, RoutedEventArgs e)
         {
             if (elemUserData != null)
             {
@@ -51,6 +45,21 @@ namespace ManagerPassword
                 editElemWindow.ShowDialog();
                 UploadTable();
             }
+        }
+        private void ShowHiddenPassword_Click(object sender, RoutedEventArgs e)
+        {
+            if (MenuItemShowHiddenPwd.IsChecked)
+            {
+                EnterPasswordWindow pwdWindow = new EnterPasswordWindow();
+                pwdWindow.Owner = this;
+                pwdWindow.ShowDialog();
+            }
+        }
+        private void OpenSettingWindow_Click(object sender, RoutedEventArgs e)
+        {
+            SettingWindow settingWindow = new SettingWindow();
+            settingWindow.Owner = this;
+            settingWindow.ShowDialog();
         }
         private void OpenHelpWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -110,15 +119,6 @@ namespace ManagerPassword
             catch
             {
                 MessageBox.Show(Message.msgUrlError, Message.captionWarning, MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-        private void ShowHiddenPassword_Click(object sender, RoutedEventArgs e)
-        {
-            if (MenuItemShowHiddenPwd.IsChecked)
-            {
-                EnterPasswordWindow pwdWindow = new EnterPasswordWindow();
-                pwdWindow.Owner = this;
-                pwdWindow.ShowDialog();
             }
         }
     }

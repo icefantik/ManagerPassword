@@ -20,6 +20,7 @@
             <RowDefinition Height="306*" />
             <!-- <RowDefinition Height="19*" /> -->
         </Grid.RowDefinitions>
+        
         <DockPanel Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="File">
@@ -27,11 +28,11 @@
                     <MenuItem Header="Close"/>
                     <MenuItem Header="Save"/>
                 </MenuItem>
-                <MenuItem Header="Add password" Click="OpenAddElem"/>
+                <MenuItem Header="Add password" Click="OpenAddWindow_Click"/>
                 <MenuItem Header="Hidden password">
                     <MenuItem x:Name="MenuItemShowHiddenPwd" Header="Show" IsCheckable="True" IsChecked="False" Click="ShowHiddenPassword_Click"/>
                 </MenuItem>
-                <MenuItem Header="Setting" Click="OpenSetting_Click"/>
+                <MenuItem Header="Setting" Click="OpenSettingWindow_Click"/>
                 <MenuItem Header="Help" Click="OpenHelpWindow_Click">
                 </MenuItem>
             </Menu>
@@ -61,7 +62,7 @@
                     <MenuItem Header="Copy password" Click="CopyPasswordMenuItem_Click"/>
                     <MenuItem Header="Copy url" Click="CopyUrlMenuItem_Click"/>
                     <MenuItem Header="Folow a url" Click="FolowUrl_Click"/>
-                    <MenuItem Header="Edit" Click="OpenEdit_Click"/>
+                    <MenuItem Header="Edit" Click="OpenEditWindow_Click"/>
                     <MenuItem Header="Delete" Click="DeleteMenuItem_Click"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
