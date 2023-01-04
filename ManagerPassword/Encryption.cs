@@ -35,7 +35,6 @@ namespace ManagerPassword
         }
         private static string RSAEncoder(string pwd, long e, long n)
         {
-            //List<string> result = new List<string>();
             string result = "";
             BigInteger bi;
             for (int i = 0; i < pwd.Length; ++i)
@@ -47,7 +46,6 @@ namespace ManagerPassword
                 BigInteger n_ = new BigInteger((int)n);
 
                 bi %= n_;
-                //result.Add(bi.ToString());
                 result += bi.ToString() + "-";
             }
             result = result.Remove(result.Length-1);

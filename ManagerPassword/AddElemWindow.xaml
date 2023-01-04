@@ -25,7 +25,8 @@
             <RowDefinition Height="35*" />
         </Grid.RowDefinitions>
 
-        <TextBox Name="textboxTitle" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
+        <TextBlock Text="qwer" Grid.Row="1" Grid.Column="0" Foreground="LightSlateGray" IsHitTestVisible="False"/>
+        <TextBox Name="textboxTitle" Background="Transparent" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
         <TextBox Name="textboxUsername" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="1" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
         <TextBox Name="textboxEmail" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="2" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
         <TextBox Name="textboxUrl" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="3" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
