@@ -78,16 +78,14 @@ namespace ManagerPassword
             }
             return e;
         }
-        //public static string DecryptionPwd(string hashPwd, long d, long n)
         public static string RSADecryption(string hashPwd, long d, long n)
         {
-
-            hashPwd.Split('-');
+            string[] hashPwdArray = hashPwd.Split('-');
             string result = "";
             BigInteger bi;
-            for (int i = 0; i < hashPwd.Length; ++i)
+            foreach (var item in hashPwdArray)
             {
-                bi = new BigInteger(Convert.ToDouble(hashPwd[i]));
+                bi = new BigInteger(Convert.ToDouble(item));
                 bi = BigInteger.Pow(bi, (int)d);
 
                 BigInteger n_ = new BigInteger((int)n);
