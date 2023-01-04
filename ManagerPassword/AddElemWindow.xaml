@@ -25,26 +25,27 @@
             <RowDefinition Height="35*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="qwer" FontSize="17" Grid.Row="1" Grid.Column="0" Foreground="LightSlateGray" IsHitTestVisible="False"/>
+        <TextBlock Text="Title" FontSize="15" Grid.Row="1" Grid.Column="0" Foreground="LightSlateGray" IsHitTestVisible="False"/>
         <TextBox Name="textboxTitle" Background="Transparent" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
 
-        <TextBlock Text="qwer" FontSize="17" Grid.Row="1" Grid.Column="1" Foreground="LightSlateGray" IsHitTestVisible="False"/>
+        <TextBlock Text="Login" FontSize="15" Grid.Row="1" Grid.Column="1" Foreground="LightSlateGray" IsHitTestVisible="False"/>
         <TextBox Name="textboxUsername" Background="Transparent" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="1" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
 
-        <TextBlock Text="qwer" FontSize="17" Grid.Row="1" Grid.Column="2" Foreground="LightSlateGray" IsHitTestVisible="False"/>
+        <TextBlock Text="Email" FontSize="15" Grid.Row="1" Grid.Column="2" Foreground="LightSlateGray" IsHitTestVisible="False"/>
         <TextBox Name="textboxEmail" Background="Transparent" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="2" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
 
-        <TextBlock Text="qwer" FontSize="17" Grid.Row="1" Grid.Column="3" Foreground="LightSlateGray" IsHitTestVisible="False"/>
+        <TextBlock Text="Url" FontSize="15" Grid.Row="1" Grid.Column="3" Foreground="LightSlateGray" IsHitTestVisible="False"/>
         <TextBox Name="textboxUrl" Background="Transparent" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="3" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
 
-        <TextBlock Text="qwer" FontSize="17" Grid.Row="1" Grid.Column="4" Foreground="LightSlateGray" IsHitTestVisible="False"/>
+        <TextBlock Text="Password" FontSize="15" Grid.Row="1" Grid.Column="4" Foreground="LightSlateGray" IsHitTestVisible="False"/>
         <TextBox Name="textboxPassword" Background="Transparent" Grid.Row="1" Grid.Column="4" FontSize="12" Language="en-US" Grid.ColumnSpan="2"/>
 
         <Button Grid.Row="1" Grid.Column="5" Click="GenerationPassword_Click">
             <Image Source="Images/image_gen_pwd.jpg"/>
         </Button>
 
-        <TextBox Name="textboxNote" Grid.Row="1" Grid.ColumnSpan="1"  Grid.Column="6" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
+        <TextBlock Text="Note" FontSize="15" Grid.Row="1" Grid.Column="6" Foreground="LightSlateGray" IsHitTestVisible="False"/>
+        <TextBox Name="textboxNote" Background="Transparent" Grid.Row="1" Grid.ColumnSpan="1"  Grid.Column="6" FontSize="12" AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US"/>
         <Button Name="btnAdd" Content="Add" Grid.Column="7" Grid.Row="1" Grid.RowSpan="1" Click="AddElem_Btn"/>
     </Grid>
 </Window>
