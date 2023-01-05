@@ -20,7 +20,7 @@
             <RowDefinition Height="306*" />
             <!-- <RowDefinition Height="19*" /> -->
         </Grid.RowDefinitions>
-        
+
         <DockPanel Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="File">
@@ -54,15 +54,15 @@
                 <DataGridTextColumn Header="password" Binding="{Binding Path=password, Converter={StaticResource dataConvPassword}}" />
                 <DataGridTextColumn Header="note" Binding="{Binding Path=note}" />
             </DataGrid.Columns>
-
+            <!--
             <DataGridTemplateColumn Header="close eye" Width="SizeToCells" IsReadOnly="True">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding}"></Image>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-
+                        <Image Source="Image\closed eye"></Image>
+            </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn> -->
+            
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Copy" Command="Copy"/>
