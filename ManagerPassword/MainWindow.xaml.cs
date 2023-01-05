@@ -121,5 +121,13 @@ namespace ManagerPassword
                 MessageBox.Show(Message.msgUrlError, Message.captionWarning, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        private void ShowOrHiddenPwd_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).Content = new Image
+            {
+                Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
+            };
+        }
     }
 }

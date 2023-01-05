@@ -38,6 +38,7 @@
             </Menu>
         </DockPanel>
 
+        <!--
         <ItemsControl Grid.Row="1" Grid.RowSpan="2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -45,6 +46,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        -->
         <DataGrid x:Name="userData" PreviewMouseRightButtonDown="Click_RightButton" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{DynamicResource ResourceKey=UserData}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="title" Binding="{Binding Path=title}" />
@@ -52,17 +54,20 @@
                 <DataGridTextColumn Header="email" Binding="{Binding Path=email}" />
                 <DataGridTextColumn Header="url" Binding="{Binding Path=url}" />
                 <DataGridTextColumn Header="password" Binding="{Binding Path=password, Converter={StaticResource dataConvPassword}}" />
+                <DataGridTemplateColumn x:Name="TemplateColumn">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnShowHiddenPwd" Visibility="Visible" Height="20" Width="20" Click="ShowOrHiddenPwd_Click">
+                                <Button.Content>
+                                    <Image x:Name="ImageShowHiddenPwd" Source="Images/closed_eye.png"  />
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="note" Binding="{Binding Path=note}" />
             </DataGrid.Columns>
-            <!--
-            <DataGridTemplateColumn Header="close eye" Width="SizeToCells" IsReadOnly="True">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Image Source="Image\closed eye"></Image>
-            </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn> -->
-            
+
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Copy" Command="Copy"/>
