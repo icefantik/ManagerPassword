@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
+using System.Security.Cryptography;
 
 namespace ManagerPassword
 {
@@ -23,6 +24,8 @@ namespace ManagerPassword
                 m = (p - 1) * (q - 1);
                 d = CalculateD(m);
                 e = CalculateE(d, m);
+
+                RSA.Create(pwd);
 
                 return RSAEncoder(pwd, e, n);
             }
