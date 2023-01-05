@@ -37,7 +37,7 @@ namespace ManagerPassword
         {
 
             Database.Database.FillDataAdapter(String.Format(Database.Query.execUpdateUserData, contentId, textboxTitle.Text, textboxUsername.Text, textboxEmail.Text,
-                textboxUrl.Text, textboxPassword.Text, textboxNote.Text));
+                textboxUrl.Text, Encryption.EncryptionPwd(textboxPassword.Text), textboxNote.Text));
             Hide();
         }
     }
