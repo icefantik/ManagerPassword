@@ -54,6 +54,15 @@
                 <DataGridTextColumn Header="password" Binding="{Binding Path=password, Converter={StaticResource dataConvPassword}}" />
                 <DataGridTextColumn Header="note" Binding="{Binding Path=note}" />
             </DataGrid.Columns>
+
+            <DataGridTemplateColumn Header="close eye" Width="SizeToCells" IsReadOnly="True">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}"></Image>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Copy" Command="Copy"/>
