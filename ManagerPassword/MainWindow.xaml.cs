@@ -147,7 +147,6 @@ namespace ManagerPassword
             {
                 (sender as Button).Content = new Image
                 {
-                    
                     Source = new BitmapImage(new Uri(@"/Images/closed_eye.png", UriKind.Relative))
                 };
             }
