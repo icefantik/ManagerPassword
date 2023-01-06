@@ -57,7 +57,7 @@
                 <DataGridTemplateColumn x:Name="TemplateColumn">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnShowHiddenPwd" Visibility="Visible" Height="20" Width="20" Click="ShowOrHiddenPwd_Click">
+                            <Button x:Name="btnShowHiddenPwd" ClickMode="Press" Visibility="Visible" Height="20" Width="20" Click="ShowOrHiddenPwd_Click">
                                 <Button.Content>
                                     <Image x:Name="ImageShowHiddenPwd" Source="Images/closed_eye.png"  />
                                 </Button.Content>

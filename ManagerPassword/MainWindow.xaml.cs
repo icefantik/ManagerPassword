@@ -130,13 +130,27 @@ namespace ManagerPassword
 
         private void ShowOrHiddenPwd_Click(object sender, RoutedEventArgs e)
         {
-            var t = (sender as Button).Content;
-            var tmp = e.Source;
-            (sender as Button).Content = new Image
+            var mainText = ((sender as Button).Content as Image).Source.ToString();
+
+            int index_start_name = mainText.Length - 1;
+            for (; mainText[index_start_name] != '/' && index_start_name >= 0; --index_start_name)
+                ;
+
+            if (mainText.Substring(index_start_name + 1) == "closed_eye.png")
             {
-                
-                Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
-            };
+                (sender as Button).Content = new Image
+                {
+                    Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
+                };
+            }
+            else
+            {
+                (sender as Button).Content = new Image
+                {
+                    
+                    Source = new BitmapImage(new Uri(@"/Images/closed_eye.png", UriKind.Relative))
+                };
+            }
         }
     }
 }
