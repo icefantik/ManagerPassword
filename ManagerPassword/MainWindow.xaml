@@ -53,7 +53,16 @@
                 <DataGridTextColumn Header="username" Binding="{Binding Path=username}" />
                 <DataGridTextColumn Header="email" Binding="{Binding Path=email}" />
                 <DataGridTextColumn Header="url" Binding="{Binding Path=url}" />
-                <DataGridTextColumn Header="password" Binding="{Binding Path=password, Converter={StaticResource dataConvPassword}}" />
+                <DataGridTextColumn x:Name="textBoxPwd" Header="password" Binding="{Binding Path=password, Converter={StaticResource dataConvPassword}}" />
+
+                <!--<DataGridTemplateColumn Header="password">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <PasswordBox />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+
                 <DataGridTemplateColumn x:Name="TemplateColumn">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

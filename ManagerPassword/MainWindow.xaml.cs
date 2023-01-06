@@ -142,6 +142,8 @@ namespace ManagerPassword
                 {
                     Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
                 };
+                //userData.Items.
+                //textBoxPwd.
             }
             else
             {
