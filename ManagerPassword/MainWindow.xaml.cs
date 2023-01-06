@@ -1,10 +1,16 @@
 ﻿using ManagerPassword.Database;
 using ManagerPassword.Resources;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Mime;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -124,8 +130,11 @@ namespace ManagerPassword
 
         private void ShowOrHiddenPwd_Click(object sender, RoutedEventArgs e)
         {
+            var t = (sender as Button).Content;
+            var tmp = e.Source;
             (sender as Button).Content = new Image
             {
+                
                 Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
             };
         }
