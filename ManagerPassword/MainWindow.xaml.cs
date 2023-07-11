@@ -132,18 +132,20 @@ namespace ManagerPassword
         {
             var mainText = ((sender as Button).Content as Image).Source.ToString();
 
+            //cut name image
             int index_start_name = mainText.Length - 1;
             for (; mainText[index_start_name] != '/' && index_start_name >= 0; --index_start_name)
                 ;
-
+            //check password hiden or not
             if (mainText.Substring(index_start_name + 1) == "closed_eye.png")
             {
                 (sender as Button).Content = new Image
                 {
                     Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
                 };
-                //userData.Items.
-                //textBoxPwd.
+                var v = userData.SelectedCells;
+                var tmp = userData.Items[0];
+                var t = e.Source;
             }
             else
             {

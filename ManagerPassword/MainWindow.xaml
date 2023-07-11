@@ -23,11 +23,6 @@
 
         <DockPanel Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="File">
-                    <MenuItem Header="Open"/>
-                    <MenuItem Header="Close"/>
-                    <MenuItem Header="Save"/>
-                </MenuItem>
                 <MenuItem Header="Add password" Click="OpenAddWindow_Click"/>
                 <MenuItem Header="Hidden password">
                     <MenuItem x:Name="MenuItemShowHiddenPwd" Header="Show" IsCheckable="True" IsChecked="False" Click="ShowHiddenPassword_Click"/>
