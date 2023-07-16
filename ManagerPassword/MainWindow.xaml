@@ -48,12 +48,19 @@
                 <DataGridTextColumn Header="username" Binding="{Binding Path=username}" />
                 <DataGridTextColumn Header="email" Binding="{Binding Path=email}" />
                 <DataGridTextColumn Header="url" Binding="{Binding Path=url}" />
-                <DataGridTextColumn x:Name="textBoxPwd" Header="password" Binding="{Binding Path=password, Converter={StaticResource dataConvPassword}}" />
-
+                <!-- Mode=TwoWay, ElementName=VisiblePassword, -->
+                <DataGridTextColumn x:Name="textBoxPwd" Header="password" Binding="{Binding Path=password, UpdateSourceTrigger=PropertyChanged}" />
+                <!--<DataGridTextColumn x:Name="VisiblePassword" Header="password" Binding="{Binding Password, Mode=TwoWay, ElementName=textBoxPwd}" Visibility="Collapsed" />
+                -->
                 <!--<DataGridTemplateColumn Header="password">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <PasswordBox />
+                            <PasswordBox Name="PasswordBoxPass"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>-->

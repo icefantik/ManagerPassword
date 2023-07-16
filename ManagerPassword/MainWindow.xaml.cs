@@ -143,9 +143,12 @@ namespace ManagerPassword
                 {
                     Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
                 };
-                var v = userData.SelectedCells;
-                var tmp = userData.Items[0];
-                var t = e.Source;
+                textBoxPwd.Visibility = Visibility.Collapsed;
+                //VisiblePassword.Visibility = Visibility.Visible;
+                //var v = userData.SelectedCells;
+                //var tmp = userData.Items;
+                //var t = e.Source;
+                //userData.ItemsSource = userData.Items;
             }
             else
             {
@@ -153,7 +156,14 @@ namespace ManagerPassword
                 {
                     Source = new BitmapImage(new Uri(@"/Images/closed_eye.png", UriKind.Relative))
                 };
+                textBoxPwd.Visibility = Visibility.Visible;
+                //VisiblePassword.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void textBoxPwd_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
