@@ -7,8 +7,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Mime;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Remoting;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,11 +33,28 @@ namespace ManagerPassword
     public partial class MainWindow : Window
     {
         private UserData elemUserData;
+        private class ComboData
+        {
+            public string Name { get; set; }
+            public override string ToString() => $"{Name}";
+        }
         public MainWindow()
         {
             InitializeComponent();
             UploadTable();
+            whatSearch.ItemsSource = new ComboData[]
+            {
+                new ComboData { Name = title },
+                new ComboData { Name = login },
+                new ComboData { Name = email },
+                new ComboData { Name = url }
+            };
+            whatSearch.SelectedIndex = 0;
         }
+        private const string title = "Title";
+        private const string login = "Login";
+        private const string email = "Email";
+        private const string url = "Url";
         private void OpenAddWindow_Click(object sender, RoutedEventArgs e)
         {
             AddElemWindow addElemWindow = new AddElemWindow();
@@ -133,6 +153,9 @@ namespace ManagerPassword
             var mainText = ((sender as Button).Content as Image).Source.ToString();
 
             //cut name image
+            int parse = userData.SelectedIndex;
+
+            //var v = userData.SelectedCells;
             int index_start_name = mainText.Length - 1;
             for (; mainText[index_start_name] != '/' && index_start_name >= 0; --index_start_name)
                 ;
@@ -143,9 +166,39 @@ namespace ManagerPassword
                 {
                     Source = new BitmapImage(new Uri(@"/Images/open_eye.png", UriKind.Relative))
                 };
-                textBoxPwd.Visibility = Visibility.Collapsed;
-                //VisiblePassword.Visibility = Visibility.Visible;
-                //var v = userData.SelectedCells;
+                try
+                {
+                    DataGridRow row = (DataGridRow)userData.ItemContainerGenerator.ContainerFromIndex(parse);
+                    //var r = row.DataContext;
+                    //var s = userData.Items[parse];
+                    //var t = row.Item;
+                    var q = e.Source;
+
+                    //var p = e.Row.
+
+                    //var s = t.password;
+                    var tmp = userData.Columns[4].Visibility;
+                    var x = userData.Columns[4].GetCellContent(userData.Items[parse]) as TextBlock;
+
+                    //x.Visibility = Visibility.Collapsed;
+                }
+                catch (System.IndexOutOfRangeException)
+                {
+
+                }
+
+                //userData.Columns[0].Visibility = Visibility.Collapsed;
+                
+                //for (int i = 0; i < userData.Items.Count; i++)
+                //{
+                //    DataGridRow row = (DataGridRow)userData.ItemContainerGenerator
+                //                                               .ContainerFromIndex(i);
+                //    row.Visibility = Visibility.Collapsed;
+                //}
+
+                textBoxPwd.Visibility = Visibility.Visible;
+                VisiblePassword.Visibility = Visibility.Collapsed;
+
                 //var tmp = userData.Items;
                 //var t = e.Source;
                 //userData.ItemsSource = userData.Items;
@@ -156,14 +209,50 @@ namespace ManagerPassword
                 {
                     Source = new BitmapImage(new Uri(@"/Images/closed_eye.png", UriKind.Relative))
                 };
-                textBoxPwd.Visibility = Visibility.Visible;
-                //VisiblePassword.Visibility = Visibility.Collapsed;
+                textBoxPwd.Visibility = Visibility.Collapsed;
+                VisiblePassword.Visibility = Visibility.Visible;
             }
         }
 
         private void textBoxPwd_Selected(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void userData_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var p = e.Row.Item;
+        }
+
+        private void OpenSearchWindow_Click(object sender, RoutedEventArgs e)
+        {
+            SearchWindow searchWindow = new SearchWindow();
+            searchWindow.Owner = this;
+            searchWindow.Show();
+        }
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            List<UserData> dataTable = new List<UserData>();
+            if (whatSearch.SelectedItem is ComboData userData && searchTextBox.Text != "")
+            {
+                switch (userData.Name)
+                {
+                    case title: dataTable = Database.Database.GetListUserData(String.Format(Query.execSearchTitle, searchTextBox.Text)); break;
+                    case login: dataTable = Database.Database.GetListUserData(String.Format(Query.execSearchLogin, searchTextBox.Text)); break;
+                    case email: dataTable = Database.Database.GetListUserData(String.Format(Query.execSearchEmail, searchTextBox.Text)); break;
+                    case url: dataTable = Database.Database.GetListUserData(String.Format(Query.execSearchUrl, searchTextBox.Text)); break;
+                }
+            }
+            UploadSearchResult(dataTable);
+        }
+        private void UploadSearchResult(List<UserData> dataTable)
+        {
+            userData.ItemsSource = dataTable;
+        }
+
+        private void ShowAllElem_Click(object sender, RoutedEventArgs e)
+        {
+            UploadTable();
         }
     }
 }

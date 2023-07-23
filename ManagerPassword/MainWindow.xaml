@@ -12,18 +12,23 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <!--<ColumnDefinition Width="29*" />-->
-            <ColumnDefinition Width="103*" />
+            <ColumnDefinition Width="433*" />
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="140*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="18*" />
-            <RowDefinition Height="18*" />
-            <RowDefinition Height="306*" />
+            <RowDefinition Height="23*" />
+            <RowDefinition Height="22.844" />
+            <RowDefinition Height="24*" />
+            <RowDefinition Height="364*"/>
             <!-- <RowDefinition Height="19*" /> -->
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.ColumnSpan="2">
+        <DockPanel Grid.ColumnSpan="4">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Add password" Click="OpenAddWindow_Click"/>
+                <MenuItem Header="Edit element" Click="OpenEditWindow_Click"/>
                 <MenuItem Header="Hidden password">
                     <MenuItem x:Name="MenuItemShowHiddenPwd" Header="Show" IsCheckable="True" IsChecked="False" Click="ShowHiddenPassword_Click"/>
                 </MenuItem>
@@ -42,16 +47,20 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         -->
-        <DataGrid x:Name="userData" PreviewMouseRightButtonDown="Click_RightButton" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{DynamicResource ResourceKey=UserData}">
+        <TextBox x:Name="searchTextBox" Grid.Column="0" Grid.Row="1"/>
+        <ComboBox x:Name="whatSearch" Grid.Column="1" Grid.Row="1"/>
+        <Button Click="Search_Click" Grid.Column="2" Grid.Row="1">Search</Button>
+        <Button Click="ShowAllElem_Click" Grid.Column="3" Grid.Row="1">Show all elements</Button>
+        <DataGrid x:Name="userData" PreviewMouseRightButtonDown="Click_RightButton" CellEditEnding="userData_CellEditEnding" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="2" Grid.RowSpan="2" ItemsSource="{DynamicResource ResourceKey=UserData}" SelectedItem="{Binding Path=SelectedCustomer, Mode=TwoWay}" Grid.ColumnSpan="4">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="title" Binding="{Binding Path=title}" />
                 <DataGridTextColumn Header="username" Binding="{Binding Path=username}" />
                 <DataGridTextColumn Header="email" Binding="{Binding Path=email}" />
                 <DataGridTextColumn Header="url" Binding="{Binding Path=url}" />
                 <!-- Mode=TwoWay, ElementName=VisiblePassword, -->
-                <DataGridTextColumn x:Name="textBoxPwd" Header="password" Binding="{Binding Path=password, UpdateSourceTrigger=PropertyChanged}" />
-                <!--<DataGridTextColumn x:Name="VisiblePassword" Header="password" Binding="{Binding Password, Mode=TwoWay, ElementName=textBoxPwd}" Visibility="Collapsed" />
-                -->
+                <DataGridTextColumn x:Name="textBoxPwd" Header="password" Binding="{Binding Path=password, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" />
+                <DataGridTextColumn x:Name="VisiblePassword" Header="password" Binding="{Binding Mode=TwoWay, ElementName=textBoxPwd, Path=password, UpdateSourceTrigger=PropertyChanged}" />
+
                 <!--<DataGridTemplateColumn Header="password">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -92,7 +101,6 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-
         <!--<Button x:Name="btnShowHiddenPwd" Content="Show Hidden Passwords" Grid.Column="0" Grid.Row="1" Click="btnShowHiddenPwd_Click"/>-->
 
     </Grid>

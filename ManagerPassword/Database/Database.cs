@@ -31,6 +31,10 @@ namespace ManagerPassword.Database
         {
             return sqlConnection;
         }
+        public static DataTable SearchUserData(string query)
+        {
+            return FillDataAdapter(query);
+        }
         public static DataTable FillDataAdapter(string query)
         {
             Database database = new Database();
